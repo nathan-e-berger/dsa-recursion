@@ -52,20 +52,58 @@ function everyOther(str) {
 
 /** find: return boolean depending on if val exists in array or not. */
 
-function find(arr, val) {
+/**
+ * BC - Length of list is 0...?
+ * Progress: slice the list smaller each time?
+ * Call itself if we haven't found the sought word
+ *
+ *
+ * Without recursion:
+ * Loop through the list,
+ * conditional that checks if the current word I'm on in the loop is the sought word,
+ * if it is, return true,
+ * if I reach the end of the list, and haven't found the sought word, return false.
+ *
+ */
 
+function find(arr, val) {
+  if (arr.length === 0) return false;
+
+  return arr[0] === val ? true : find(arr.slice(1), val)
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {
+/**
+ * BC - if length of str is 0 OR if first char doesn't equal last char
+ * progress - slicing off beginning and end each time we call func again
+ *
+ */
 
+function isPalindrome(str) {
+  if (str.length === 1) return true;
+  if (str === "") return true;
+
+  if (str[0] !== str[str.length - 1]) return false;
+
+  if(str.length === 2 && str[0] === str[1]) {
+    return true;
+  }
+
+  return isPalindrome(str.slice(1, -1));
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
+/**
+ * BC - str length is 0
+ * progress - slice the string each time we call func again
+ *
+ */
 function revString(str) {
+  if (str.length === 0) return "";
 
+  return str[str.length - 1] + revString(str.slice(0, -1));
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
