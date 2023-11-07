@@ -1,19 +1,53 @@
 /** product: calculate the product of an array of numbers. */
-
+/**
+ *  BC - empty array
+ *  call product with index 0 and check if empty
+ *  if not, then call product(next index).
+ *  if yes, then return
+ */
 function product(nums) {
+  if (nums.length === 0) return 1;
 
+  return nums[0] * product(nums.slice(1));
 }
 
 /** longest: return the length of the longest word in an array of words. */
 
+/**
+ *  BC - empty array
+ *  call longest(idx0) and check if array is empty
+ *  if not, then call longest(next idx) and compare to previous calls
+ *  if yes, then return
+ */
 function longest(words) {
+  if (words.length === 0) return 0;
 
+  return words[0].length > longest(words.slice(1))
+    ? words[0].length
+    : longest(words.slice(1));
 }
 
 /** everyOther: return a string with every other letter. */
 
+/**
+ *  BC - are we at str.length?
+ *  call everyOther on all idxs and check if at str.length
+ *  if not, call everyOther(nextix)
+ *  if yes, return
+ *
+ * "hello"
+*/
+// everyOther(str):
+// hello;
+// llo;
+// "";
+
+// str[0] = h + l + o
 function everyOther(str) {
 
+  if (str.length === 0) return "";
+
+  return str[0] + everyOther(str.slice(2));
 }
 
 /** find: return boolean depending on if val exists in array or not. */
