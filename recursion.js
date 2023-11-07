@@ -69,7 +69,7 @@ function everyOther(str) {
 function find(arr, val) {
   if (arr.length === 0) return false;
 
-  return arr[0] === val ? true : find(arr.slice(1), val)
+  return arr[0] === val ? true : find(arr.slice(1), val);
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
@@ -86,7 +86,7 @@ function isPalindrome(str) {
 
   if (str[0] !== str[str.length - 1]) return false;
 
-  if(str.length === 2 && str[0] === str[1]) {
+  if (str.length === 2 && str[0] === str[1]) {
     return true;
   }
 
@@ -107,9 +107,17 @@ function revString(str) {
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
-
+/**
+ *  BC - empty array
+ *  progress - pop last element of arr
+ *  if matches value, return arr.length-1
+ *  else continue popping
+ */
 function findIndex(arr, val) {
+  if (arr[0] === val) return 0;
+  if (arr.length === 0) return -1;
 
+  return findIndex(arr.slice(1), val) + 1 || - 1;
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
