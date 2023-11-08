@@ -122,8 +122,23 @@ function findIndex(arr, val) {
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
-function gatherStrings(obj) {
+/**
+ * BC - End of loop (for in)
+ *
+ */
 
+function gatherStrings(obj) {
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      console.log("if val is obj, ", obj[key])
+      return gatherStrings(obj[key]);
+
+    } else if (typeof obj[key] === "string") {
+      return obj[key];
+    } else {
+      continue;
+    }
+  }
 }
 
 // FURTHER STUDY
